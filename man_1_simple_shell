@@ -1,0 +1,60 @@
+.TH man 3 "20 August 2019" "1.0" "simple_shell man page"
+.SH NAME
+.B simple_shell
+- 
+.SH SYNOPSIS
+.B #include "shell.h"
+.B prototype
+.SH DESCRIPTION
+The terminal
+.SH FORMAT
+.TP
+%
+.TP
+%
+.TP
+%
+.TP
+%
+.SH Return value
+.SH Example
+.PP
+.RS
+.BR " "
+.br
+.BR " " 
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR " "
+.br
+.BR 
+.br
+.PP
+.SH 
+.SH OPTIONS
+.B Not yet.
+.SH SEE ALSO
+.
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Daniela Chamorro, Jean Victoria
