@@ -14,11 +14,11 @@ int main(int argc, char **argv, char **env)
 	size_t length;
 	ssize_t characters;
 	pid_t pid;
-	int status;
+	int status, count = 0;
 
 	buffer = NULL, length = 0;
 
-	while ((characters = getline(&buffer, &length, stdin)) != -1)
+	while ((characters = getline(&buffer, &length, stdin)))
 	{
 		if (characters = EOF)
 		{
@@ -27,7 +27,7 @@ int main(int argc, char **argv, char **env)
 			free(buffer);
 			exit(0);
 		}
-		++count;
+		count++;
 		commands = array_strtok(buffer);
 		pid = fork();
 		if (pid == -1)
@@ -39,7 +39,7 @@ int main(int argc, char **argv, char **env)
 		}
 		else
 		{
-			wait($status);
+			wait(&status);
 			/*free everithing*/
 		}
 		length = 0, buffer = NULL;

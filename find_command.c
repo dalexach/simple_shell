@@ -12,9 +12,10 @@ unsigned int length_of_command(char *string)
 
 	while (string[i] != '\0')
 	{
-		if (s[i] != ' ')
+		if (string[i] != ' ')
 			flag = 1;
-		if ((flag && s[i + 1] == ' ') || (flag && s[i + 1] == '\0'))
+		if ((flag && string[i + 1] == ' ')
+			|| (flag && string[i + 1] == '\0'))
 		{
 			++command;
 			flag = 0;
@@ -49,14 +50,7 @@ char **array_strtok(char *str)
 		holder[i] = malloc(_strlen(token) + 1);
 		if (holder[i] == NULL)
 		{
-			while (holder[j])
-			{
-				free(holder[j]);
-				j++;
-			}
-			if (holder[j] == NULL)
-				free(holder[j]);
-			free(holder);
+			free_all(holder);
 			return (NULL);
 		}
 		_strncpy(holder[i], token, _strlen(token) + 1);
