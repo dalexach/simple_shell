@@ -1,6 +1,6 @@
 # Simple Shell
 
-_The simple shell project is for [Holberton] (https://www.holbertonschool.com/)students that are ending the first semester. It helps to explore, underestand and create a functional basic shell program. We include all that we learned througth the semester._
+The simple shell project is for [Holberton](https://www.holbertonschool.com/) students that are ending the first semester. It helps to explore, underestand and create a functional basic shell program. We include all that we learned througth the semester.
 
 ## Beginning
 
@@ -54,7 +54,7 @@ Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones
 * **Daniela Chamorro** - *Development and documentation* - [dalexach](https://github.com/dalexach)
 * **Jean Victoria** - *Documentation and development* - [jeanvictoria](https://github.com/jeanvictoria)
 
-_Also you can see other [contributors](https://github.com/dalexach/simple_shell/graphs/contributors) who helped in this project.
+Also you can see other [contributors](https://github.com/dalexach/simple_shell/graphs/contributors) who helped in this project.
 
 ## License
 
