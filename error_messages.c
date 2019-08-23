@@ -16,6 +16,7 @@ void fork_fail(void)
  * @av: vector of commands
  * @command: command not found
  * @count: counter of times the loop has been executed
+ * @flag: flag to control special messages
  * Return: Nothing.
 */
 
