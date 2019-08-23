@@ -22,4 +22,14 @@ int _strcmp(char *s1, char *s2);
 /**free_all.c*/
 void free_all(char **ptr);
 
+/**process_functions.c*/
+void path_e(char **commands, char *buffer, char **env, char **argv, int count);
+
+/**error_messages.c*/
+void fork_fail(void);
+void message_error(char **av, char *command, int count);
+
+/**_putchar.c*/
+int _putchar(char c);
+
 #endif /* shell */
