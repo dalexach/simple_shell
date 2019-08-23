@@ -23,11 +23,25 @@ void free_all(char **ptr)
 	free(ptr);
 }
 
+/**
+ * free_parent - free the buffer and the commands
+ * @buffer: buffer in getline
+ * @commands: double pointer that store all the commands inserted
+ * Return: Nothing(void)
+*/
+
 void free_parent(char *buffer, char **commands)
 {
 	free(buffer);
 	free_all(commands);
 }
+
+/**
+ * free_exit - free the buffer and the commands and exit form the console
+ * @buffer: buffer in getline
+ * @commands: double pointer that store all the commands inserted
+ * Return: Nothing(void)
+*/
 
 void free_exit(char *buffer, char **commands)
 {
