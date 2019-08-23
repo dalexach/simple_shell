@@ -22,3 +22,16 @@ void free_all(char **ptr)
 		free(ptr[i]);
 	free(ptr);
 }
+
+void free_parent(char *buffer, char **commands)
+{
+	free(buffer);
+	free_all(commands);
+}
+
+void free_exit(char *buffer, char **commands)
+{
+	free(buffer);
+	free_all(commands);
+	exit(EXIT_SUCCESS);
+}

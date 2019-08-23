@@ -14,10 +14,12 @@ int main(int argc, char **argv, char **env)
 	size_t length;
 	ssize_t characters;
 	pid_t pid;
+	struct stat fileStat;
 	int status, count = 0;
 
 	buffer = NULL, length = 0;
-
+	if (isatty(STDIN_FILENO))
+                        write(STDOUT_FILENO, "$ ", 2);
 	while ((characters = getline(&buffer, &length, stdin)))
 	{
 		if (characters = EOF)
@@ -31,16 +33,24 @@ int main(int argc, char **argv, char **env)
 		commands = array_strtok(buffer);
 		pid = fork();
 		if (pid == -1)
-			perror("Error:"), exit(EXIT_FAILURE);
+			fork_fail();
 		if (pid == 0)
 		{
 			/*execute the command*/
-			printf("yes");
+			_execve(buffer, characters, *commands, "/usr/bin", count, env);
 		}
 		else
 		{
 			wait(&status);
 			/*free everithing*/
+			if (commands == NULL)
+				free_parent(buffer, commands);
+			/**if exit, free everithing and exit the program*/
+			else if (_strcmp("exit", commands[0]);
+				free_exit(buffer, commands);
+			/**free from the parent process*/
+			else
+				free_parent(buffer, commands);
 		}
 		length = 0, buffer = NULL;
 		if (isatty(STDIN_FILENO))
