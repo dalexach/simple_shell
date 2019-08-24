@@ -32,4 +32,8 @@ void message_error(char **av, char *command, int count);
 /**_putchar.c*/
 int _putchar(char c);
 
+/**helper.c*/
+int argv_check(char *av0, char *f_av, char **env);
+int built_in(char **av, char *prev_cwd, char **env, char *name, int count);
+
 #endif /* shell */
