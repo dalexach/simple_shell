@@ -11,17 +11,25 @@ https://github.com/dalexach/simple_shell
 ```
 _and then you can compile with this command_
 ```bash
-gcc -Wall -Werror -Wextra -pedantic *.c -o sshell
+gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
 ```
 _after the compilation you can excecute and try this shell writing_
 ```bash
-./sshell
+./hsh
 ```
 
 ### Example Output
 _Here goes the example_
 ```bash
-./sshell
+vagrant@vagrant-ubuntu-trusty-64:~/simple_shell$ ./hsh
+$
+
+$ ls
+AUTHORS           free_all.c               shell.h
+error_messages.c  functions_for_strings.c  man_1_simple_shell
+execve.c          helper.c                 _putchar.c
+find_command.c    main.c                   README.md
+$
 ```
 
 ### Requeriments
