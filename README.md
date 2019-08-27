@@ -46,31 +46,9 @@ _This project was built and development with the help of this programs and OS:_
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads) - VirtualBox is a general-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
 * [GCC](https://gcc.gnu.org/) - Compiler version 4.8.4
 
-## By contributing
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-## Versions
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
 ## Authors
 
 * **Daniela Chamorro** - *Development and documentation* - [dalexach](https://github.com/dalexach)
 * **Jean Victoria** - *Documentation and development* - [jeanvictoria](https://github.com/jeanvictoria)
 
 Also you can see other [contributors](https://github.com/dalexach/simple_shell/graphs/contributors) who helped in this project.
-
-## License
-
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Special Thanks
-
-* Comenta a otros sobre este proyecto 
-* Invita una cerveza  a alguien del equipo. 
-* Da las gracias públicamente .
-* etc.
