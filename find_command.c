@@ -35,7 +35,7 @@ char **array_strtok(char *str)
 {
 	char *token, **holder;
 	unsigned int length;
-	int i = 0, j = 0;
+	int i = 0;
 
 	str[_strlen(str) - 1] = '\0'; /**replace the new line by null*/
 	length = length_of_command(str);
@@ -50,7 +50,7 @@ char **array_strtok(char *str)
 		holder[i] = malloc(_strlen(token) + 1);
 		if (holder[i] == NULL)
 		{
-			free_all(holder);
+			free_all_dp(holder);
 			return (NULL);
 		}
 		_strncpy(holder[i], token, _strlen(token) + 1);
