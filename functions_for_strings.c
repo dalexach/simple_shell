@@ -1,54 +1,95 @@
 #include "shell.h"
+
 /**
-* *_strncpy - copies a string
-*@dest: string dest
-*@src: origin to copy
-*@n: number of bytes
+* _strncpy - Function that copies a string into other
+*@dest: destination of the string
+*@src: string to copy
+*@n: length of the string
 *Return: dest
 */
+
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i, l = 0;
+	int i;
 
-	for (i = 0; (i != n && src[i] != '\0'); i++)
-	{
-		dest[l] = src[i];
-		l++;
-	}
-	while (l != n)
-		dest[l++] = '\0';
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+
+	for ( ; i < n; i++)
+		dest[i] = '\0';
+
 	return (dest);
 }
 
 /**
-* _strlen - returns the lenght of a string
-*@s: poiter of character
-*Return: the length of a string
+* _strncpyconst - Function that copies a constant string into other
+*@dest: destination of the string
+*@src: string to copy
+*@n: length of the string
+*Return: dest
 */
-int _strlen(char *s)
-{
-	int len;
 
-	len = 0;
-	while (*(s + len) != '\0')
-		len++;
-	return (len);
+char *_strncpyconst(char *dest, const char *src, int n)
+{
+	int i;
+
+	for (i = 0; i < n && src[i] != '\0'; i++)
+		dest[i] = src[i];
+	for ( ; i < n; i++)
+		dest[i] = '\0';
+
+	return (dest);
 }
 
 /**
-* _strcmp - compares two strings
-*@s1: string 1
-*@s2: string 2
-*Return: 0 for not equal, 1 if equal
+* _strlen_const - Function to find the length of a constant string
+*@str: string to calculate the length
+*Return: the length of the string
 */
+
+unsigned int _strlen_const(const char *str)
+{
+	unsigned int i = 0;
+
+	while (str[i] != '\0')
+		i++;
+
+	return (i);
+}
+
+/**
+* _strlen - Function to find the length of a string
+*@str: string to calculate the length
+*Return: the length of the string
+*/
+
+unsigned int _strlen(char *str)
+{
+	unsigned int i = 0;
+
+	while (str[i] != '\0')
+		i++;
+
+	return (i);
+}
+
+/**
+* _strcmp - Function to compare 2 strings and find if are equal
+*@s1: first string to compare
+*@s2: second string to compare
+*Return: 1 for equal, 0 if not
+*/
+
 int _strcmp(char *s1, char *s2)
 {
-	int n;
+	unsigned int i = 0;
 
-	for (n = 0; s1[n] != '\0'; n++)
+	while (s1[i] != '\0')
 	{
-		if (s1[n] > s2[n])
+		if (s1[i] != s2[i])
 			return (0);
+		i++;
 	}
+
 	return (1);
 }
