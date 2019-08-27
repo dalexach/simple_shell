@@ -1,12 +1,35 @@
 #include "shell.h"
 
 /**
- * main - Simple shell,
- * @argc: Argument counter
- * @argv: Argument vector
- * @env: Environment variables
- * Return: 1 if fails, 0 on exit
- */
+* INThandler - handles signals and write the prompt
+*@sig: signal to handle
+*Return: Nothing (void)
+*/
+
+void INThandler(int sig)
+{
+	(void)sig;
+	write(STDOUT_FILENO, "\n$ ", 3);
+}
+
+/**
+* print_dollar - Function to print the dollar sign
+*Return: Nothing(void)
+*/
+
+void print_dollar(void)
+{
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "$ ", 2);
+}
+
+/**
+* main - principal function to run the shell
+*@argc: argument count
+*@argv: argument vector
+*@env: enviroment variables
+*Return: 0 on exit, 1 if any failures happen
+*/
 
 int main(int argc, char **argv, char **env)
 {
@@ -14,49 +37,38 @@ int main(int argc, char **argv, char **env)
 	size_t length;
 	ssize_t characters;
 	pid_t pid;
-	struct stat fileStat;
-	int status, count = 0;
-
-	buffer = NULL, length = 0;
-	if (isatty(STDIN_FILENO))
-                        write(STDOUT_FILENO, "$ ", 2);
+	int status, count;
+	(void)argc;
+	buffer = NULL, length = 0, count = 0;
+	/*write promt only if it's from standard input*/
+	print_dollar();
+	/*infinite loop*/
 	while ((characters = getline(&buffer, &length, stdin)))
 	{
-		if (characters = EOF)
-		{
-			if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "\n", 1);
-			free(buffer);
-			exit(0);
-		}
+		/*signal kill for contro+c */
+		signal(SIGINT, INThandler);
+		/*check the end of file*/
+		if (characters == EOF)
+			end_file(buffer);
 		count++;
+		/*collect commands from the prompt and store in double pointer*/
 		commands = array_strtok(buffer);
+		/*create new process*/
 		pid = fork();
 		if (pid == -1)
 			fork_fail();
 		if (pid == 0)
-		{
-			/*execute the command*/
-			_execve(buffer, characters, *commands, "/usr/bin", count, env);
-		}
+			execute(commands, buffer, env, argv, count);
+		/*free everithing*/
 		else
 		{
 			wait(&status);
-			/*free everithing*/
-			if (commands == NULL)
-				free_parent(buffer, commands);
-			/**if exit, free everithing and exit the program*/
-			else if (_strcmp("exit", commands[0]);
-				free_exit(buffer, commands);
-			/**free from the parent process*/
-			else
-				free_parent(buffer, commands);
+			send_to_free(buffer, commands);
 		}
-		length = 0, buffer = NULL;
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "$ ", 2);
+		length = 0, buffer = NULL; /*reset for getline*/
+		print_dollar();
 	}
 	if (characters == -1)
 		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+		return (EXIT_SUCCESS);
 }
