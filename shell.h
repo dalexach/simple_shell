@@ -1,39 +1,57 @@
-#ifndef SHELL_H
-#define SHELL_H
+#ifndef _SHELL_H_
+#define _SHELL_H_
 
+/*libraries*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
-#include <signal.h>
 
-/**find_command.c*/
-unsigned int length_of_command(char *string);
+/*main.c*/
+void INThandler(int sig);
+void print_dollar(void);
+
+/*strtok_help.c*/
+unsigned int find_length_command(char *s);
 char **array_strtok(char *str);
 
-/**functions_for_strings.c*/
+/*execute.c*/
+void execute(char **commands, char *buffer, char **env,
+                char **argv, int count);
+
+/*function_for_strings.c*/
 char *_strncpy(char *dest, char *src, int n);
-int _strlen(char *s);
+char *_strncpyconst(char *dest, const char *src, int n);
+unsigned int _strlen_const(const char *str);
+unsigned int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
 
-/**free_all.c*/
-void free_all(char **ptr);
+/*env.c*/
+unsigned int find_num_dir(char *path);
+char **store_e_variables(char *fir_com, char **environ);
+char *_getenv(const char *name, char **environ);
+char *_strncpcommand(char *dest, char *src, char *command, int n, int c);
+void print_env(char **environ);
 
-/**process_functions.c*/
-void path_e(char **commands, char *buffer, char **env, char **argv, int count);
+/*free_all.c*/
+void free_all_dp(char **ptr);
+void parent_free_commands(char *buffer, char **commands);
+void send_to_free(char *buffer, char **commands);
 
-/**error_messages.c*/
+/*error_messages.c*/
+void build_message(char **av, char *fir_com, int count);
+int _puterror(char c);
+void end_file(char *buffer);
 void fork_fail(void);
-void message_error(char **av, char *command, int count);
 
-/**_putchar.c*/
-int _putchar(char c);
+/*child_process.c*/
+void null_command(char *buffer);
+void get_out(char *buffer, char **commands);
+void env_end(char *buffer, char **commands, char **env);
+void _path(char **commands, char *buffer, char **env, char **argv, int count);
 
-/**helper.c*/
-int argv_check(char *av0, char *f_av, char **env);
-int built_in(char **av, char *prev_cwd, char **env, char *name, int count);
-
-#endif /* shell */
+#endif /*SHELL.H*/

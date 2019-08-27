@@ -12,30 +12,65 @@ void fork_fail(void)
 }
 
 /**
- * message_error - prints a error message
- * @av: vector of commands
- * @command: command not found
- * @count: counter of times the loop has been executed
- * @flag: flag to control special messages
- * Return: Nothing.
+* build_message - Function to write an error message
+*@av: argument vector
+*@fir_com: first command to print if not found
+*@count: number of times executed
+*Return: Nothing(void)
 */
 
-void message_error(char **av, char *command, int count, int flag)
+void build_message(char **av, char *fir_com, int count)
 {
-	write(STDERR_FILENO, command, _strlen(command));
+	int num_length = 1, cp, mult = 1;
+
+	write(STDERR_FILENO, av[0], _strlen(av[0]));
 	write(STDERR_FILENO, ": ", 2);
-	_putchar(count);
+	cp = count;
+
+	while (cp >= 10)
+	{
+		cp /= 10;
+		mult *= 10;
+		num_length++;
+	}
+
+	while (num_length > 1)
+	{
+		if ((count / mult) < 10)
+			_puterror((count / mult + '0'));
+		else
+			_puterror((count / mult) % 10 + '0');
+		--num_length;
+		mult /= 10;
+	}
+
+	_puterror(count % 10 + '0');
 	write(STDERR_FILENO, ": ", 2);
-	if (flag == 2)
-	{
-		write(STDERR_FILENO, av[0], _strlen(av[0]));
-		write(STDERR_FILENO, ": ", 2);
-		write(STDERR_FILENO, "not found\n", 10);
-	}
-	if (flag == 1)
-	{
-		write(STDERR_FILENO, "Ilegal number: ", 18);
-		write(STDERR_FILENO, av[1], _strlen(av[1]));
-		write(STDERR_FILENO, "\n", 1);
-	}
+	write(STDERR_FILENO, fir_com, _strlen(fir_com));
+	write(STDERR_FILENO, ": not found\n", 12);
+}
+
+/**
+* _puterror - Prints a char
+*@c: character to write
+*Return: int to print
+*/
+
+int _puterror(char c)
+{
+	return (write(STDERR_FILENO, &c, 1));
+}
+
+/**
+* end_file - function to control the interrupt signal
+*@buffer: buffer array created by new line
+*Return: Nothing(void)
+*/
+
+void end_file(char *buffer)
+{
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
+	free(buffer);
+	exit(0);
 }
