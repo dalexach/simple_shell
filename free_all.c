@@ -1,11 +1,11 @@
 #include "shell.h"
 /**
- * free_all - frees all the memory including a double pointer
+ * free_all_dp - frees all the memory including a double pointer
  * @ptr: pointer to free
  * Return: Nothing
 */
 
-void free_all(char **ptr)
+void free_all_dp(char **ptr)
 {
 	unsigned int i = 0;
 
