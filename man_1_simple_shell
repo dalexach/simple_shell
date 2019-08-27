@@ -55,8 +55,6 @@ find_command.c    main.c                   README.md
 $
 
 
-.SH OPTIONS
-.B Not yet.
 .SH RESERVED WORDS
 .B exit:
 quits the program, exit the shell.

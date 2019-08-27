@@ -15,7 +15,7 @@
 void INThandler(int sig);
 void print_dollar(void);
 
-/*strtok_help.c*/
+/*find_command.c*/
 unsigned int find_length_command(char *s);
 char **array_strtok(char *str);
 
