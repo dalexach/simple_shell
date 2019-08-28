@@ -25,7 +25,7 @@ unsigned int length_of_command(char *string)
 	return (command);
 }
 
-/*
+/**
  * array_strtok - create a double pointer array that point to each string
  * from the command line
  * @str: command from the terminal
